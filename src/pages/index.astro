@@ -1,0 +1,112 @@
+---
+import "../styles/global.css";
+import { dailyJapanWisdom, justWisdom, socials, work } from "@/data/site";
+
+const title = "Julian Lai-Hung";
+const description = "Julian Lai-Hung: media, technology, AI, Japan, and daily wisdom.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site">
+      <nav class="topnav" aria-label="Primary">
+        <a href="/" aria-label="Julian home">Julian</a>
+        <div class="navlinks">
+          <a href="#work">Work</a>
+          <a href="#dailyjapanwisdom">DailyJapanWisdom</a>
+          <a href="#justwisdom">JustWisdom</a>
+        </div>
+      </nav>
+
+      <main>
+        <section class="intro-grid" aria-labelledby="intro-title">
+          <div>
+            <h1 id="intro-title">Julian</h1>
+            <p class="jp-name">ジュリアンです</p>
+
+            <div class="statement">
+              <p>I’ve built my career around big technology shifts: the early internet, digital distribution, streaming, blockchain and now AI. Always at the crossroads of media and technology.</p>
+              <p>I value global IQ, having lived and worked in London, Paris, Singapore, Los Angeles, Philadelphia and Tokyo, where I am now based. I love languages and am fluent in English, French and Japanese.</p>
+              <p>I’ve worked across film, TV and big tech, with enough startup scars in between to know that timing and resilience matter as much as the idea.</p>
+              <p>Lifelong learning, commercial judgement, cultural fluency and trust are the constants. I like building, keep the ego low, and do my best work with smart people who challenge each other without losing the plot or sense of humour.</p>
+
+              <div class="statement-jp" lang="ja">
+                <p>私のキャリアは、インターネットの黎明期、デジタル配信、ストリーミング、ブロックチェーン、そして現在のAIまで、大きなテクノロジーの転換点とともにありました。常にメディアとテクノロジーの交差点にいます。</p>
+                <p>ロンドン、パリ、シンガポール、ロサンゼルス、フィラデルフィア、そして現在拠点としている東京で暮らし、働いてきた経験から、グローバルな感覚を大切にしています。言語が好きで、英語、フランス語、日本語を話します。</p>
+                <p>映画、テレビ、大手テック企業、そしてスタートアップの現場を経験してきました。アイデアそのものと同じくらい、タイミングと粘り強さが重要だと実感しています。</p>
+                <p>学び続けること、商業的な判断力、文化への理解、信頼。これらが私にとっての軸です。つくることが好きで、エゴは低く。互いに刺激し合いながらも、ユーモアを忘れない人たちと働くときに、いちばん良い仕事ができます。</p>
+              </div>
+            </div>
+          </div>
+
+          <aside aria-labelledby="socials-title">
+            <h2 class="side-title" id="socials-title">Socials</h2>
+            <ul class="social-list">
+              {socials.map((social) => <li><a href={social.href}>{social.label}</a></li>)}
+            </ul>
+          </aside>
+        </section>
+
+        <hr class="rule" />
+
+        <section id="work" aria-labelledby="work-title">
+          <h2 id="work-title">Work</h2>
+          <div class="work-grid" role="list">
+            {work.map((item) => <div class="work-item" role="listitem">{item}</div>)}
+          </div>
+        </section>
+
+        <hr class="rule" />
+
+        <section id="dailyjapanwisdom" aria-labelledby="djw-title">
+          <div class="section-head">
+            <h2 id="djw-title">DailyJapanWisdom</h2>
+            <a class="section-link" href="https://dailyjapanwisdom.com">dailyjapanwisdom.com</a>
+          </div>
+          <div class="quote-grid">
+            {dailyJapanWisdom.map((item) => (
+              <a class="quote-card" href={item.href}>
+                <div>
+                  <div class="quote-main">{item.quote}</div>
+                  <div class="quote-reading">{item.reading}</div>
+                  <p class="quote-english">{item.english}</p>
+                </div>
+                <div class="quote-meta">{item.date} · X post</div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <hr class="rule" />
+
+        <section id="justwisdom" aria-labelledby="jw-title">
+          <h2 id="jw-title">JustWisdom</h2>
+          <div class="quote-grid">
+            {justWisdom.map((item) => (
+              <article class="quote-card">
+                <div class="quote-main">“{item.quote}”</div>
+                <div class="quote-meta">{item.attribution}</div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <hr class="rule" />
+
+        <section aria-labelledby="tokyo-title">
+          <h2 id="tokyo-title">Off the Beaten Track Tokyo</h2>
+          <p class="map-note">A personal map list for quiet corners, small discoveries, and Tokyo places worth returning to.</p>
+        </section>
+      </main>
+
+      <footer>© 2026 Julian Lai-Hung</footer>
+    </div>
+  </body>
+</html>
