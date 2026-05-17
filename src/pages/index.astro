@@ -16,104 +16,102 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
     <title>{title}</title>
   </head>
   <body>
-    <div class="site">
-      <nav class="topnav" aria-label="Primary">
-        <a class="brand" href="/" aria-label="Julian home">Julian</a>
-        <div class="navlinks">
-          <a href="#dailyjapanwisdom">Posts</a>
-          <a href="#work">About</a>
-          <a href="#justwisdom">Wisdom</a>
-        </div>
-      </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-title" href="/">Julian</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#posts">Posts</a>
+          <a href="#wisdom">Wisdom</a>
+          <a href="#about">About</a>
+          <a href="#search" aria-label="Search">⌕</a>
+          <span class="theme-dot" aria-hidden="true"></span>
+        </nav>
+      </header>
 
-      <main>
-        <hr class="rule" />
-
-        <section class="hero" aria-labelledby="intro-title">
-          <p class="kicker">ジュリアンです</p>
+      <main id="main">
+        <section class="intro" aria-labelledby="intro-title">
+          <p class="eyebrow">ジュリアンです</p>
           <h1 id="intro-title">Hi, I'm Julian.</h1>
           <a class="rss-link" href="https://dailyjapanwisdom.com">DailyJapanWisdom</a>
 
-          <div class="statement">
-            <p>Building where entertainment meets technology, from the early internet to AI. Global perspective, Tokyo base, lifelong learner. Team humanity.</p>
-            <p lang="ja">異文化理解力を大切に、東京を拠点に、インターネット黎明期からAIまで、エンターテインメントとテクノロジーの交差点で歩んできました。</p>
-          </div>
+          <p>
+            I’ve built my career around big technology shifts: the early internet,
+            digital distribution, streaming, blockchain and now AI. Always at the
+            crossroads of media and technology.
+          </p>
+          <p>
+            インターネット黎明期、デジタル配信、ストリーミング、ブロックチェーン、そしてAIまで。
+            メディアとテクノロジーの交差点でキャリアを築いてきました。
+          </p>
 
-          <ul class="social-icons" aria-label="Social links">
+          <ul class="social-links" aria-label="Social links">
             <li>
-              <a href={socialHref.Twitter} aria-label="Twitter / X">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.7-8.8L1.8 2h6.8l4.7 6.3L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z" /></svg>
+              <a href={socialHref.Twitter} aria-label="Julian on X">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.9l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.7 3.9h-2L17.7 20Z"></path></svg>
               </a>
             </li>
             <li>
-              <a href={socialHref.Instagram} aria-label="Instagram">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm4.5 3.5A4.5 4.5 0 1 1 12 16.5a4.5 4.5 0 0 1 0-9Zm0 2A2.5 2.5 0 1 0 12 14.5a2.5 2.5 0 0 0 0-5Zm5.1-2.8a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z" /></svg>
+              <a href={socialHref.Instagram} aria-label="Julian on Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.8A4.2 4.2 0 1 1 12 16.2 4.2 4.2 0 0 1 12 7.8Zm0 2A2.2 2.2 0 1 0 12 14.2 2.2 2.2 0 0 0 12 9.8Zm4.8-3.1a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"></path></svg>
               </a>
             </li>
             <li>
-              <a href={socialHref.LinkedIn} aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v12H3v-12Zm6.3 0h3.8v1.6h.1a4.2 4.2 0 0 1 3.8-2.1c4.1 0 4.9 2.7 4.9 6.2v6.3h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7h-4V9.5Z" /></svg>
+              <a href={socialHref.LinkedIn} aria-label="Julian on LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8.8H3.6V20h3.3V8.8ZM5.2 7.3a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM20.4 20h-3.3v-5.8c0-1.4-.5-2.3-1.7-2.3-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V20h-3.3s.1-10.1 0-11.2h3.3v1.6c.4-.7 1.2-1.8 3-1.8 2.2 0 3.8 1.4 3.8 4.5V20Z"></path></svg>
               </a>
             </li>
             <li>
               <a href={socialHref.DJW} aria-label="DailyJapanWisdom">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 5.3 7 11 7 11s7-5.7 7-11a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5c0 3.2-3.2 6.9-5 8.8C10.2 16.9 7 13.2 7 10a5 5 0 0 1 5-5Zm0 2.5A2.5 2.5 0 1 0 12 12a2.5 2.5 0 0 0 0-5Z" /></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.8A2.8 2.8 0 1 1 12 6.2a2.8 2.8 0 0 1 0 5.6Z"></path></svg>
               </a>
             </li>
           </ul>
         </section>
 
-        <hr class="rule" />
-
-        <section id="dailyjapanwisdom" class="section" aria-labelledby="djw-title">
-          <h2 id="djw-title">DailyJapanWisdom</h2>
-          <ul class="entry-list">
-            {dailyJapanWisdom.map((item) => (
-              <li>
-                <a class="entry-title" href={item.href}>{item.quote}</a>
-                <p class="entry-meta">Published: {item.date} <span>•</span> X post</p>
-                <p class="entry-reading">{item.reading}</p>
-                <p>{item.english}</p>
+        <section id="posts" class="post-section" aria-labelledby="posts-title">
+          <h2 id="posts-title">Featured</h2>
+          <ul class="post-list">
+            {dailyJapanWisdom.map((post) => (
+              <li class="post-item">
+                <a class="post-title" href={post.href}>{post.quote}</a>
+                <p class="post-meta">Published: {post.date} <span>•</span> X post</p>
+                <p class="post-reading">{post.reading}</p>
+                <p>{post.english}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="justwisdom" class="section" aria-labelledby="jw-title">
-          <h2 id="jw-title">JustWisdom</h2>
-          <ul class="entry-list">
+        <section id="wisdom" class="post-section" aria-labelledby="wisdom-title">
+          <h2 id="wisdom-title">Recent Wisdom</h2>
+          <ul class="post-list">
             {justWisdom.map((item) => (
-              <li>
-                <h3>“{item.quote}”</h3>
-                <p class="entry-meta">{item.attribution}</p>
+              <li class="post-item">
+                <h3>{item.quote}</h3>
+                <p class="post-meta">{item.attribution}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <hr class="rule" />
-
-        <section id="work" class="section" aria-labelledby="work-title">
-          <h2 id="work-title">About</h2>
-          <p>A path through media, streaming, big tech, startups, and AI.</p>
-          <ul class="work-list" role="list">
-            {work.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
-
-        <section class="section" aria-labelledby="tokyo-title">
-          <h2 id="tokyo-title">Off the Beaten Track Tokyo</h2>
-          <p>A personal map list for quiet corners, small discoveries, and Tokyo places worth returning to.</p>
+        <section id="about" class="about-section" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <p>
+            Film, TV, big tech, startups and AI. London / Paris / Singapore / Los Angeles /
+            Philadelphia / Tokyo. English / French / Japanese.
+          </p>
+          <p class="work-line">{work.join(" / ")}</p>
         </section>
       </main>
 
-      <footer>
-        <ul class="social-icons" aria-label="Footer social links">
-          <li><a href={socialHref.Twitter} aria-label="Twitter / X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.7-8.8L1.8 2h6.8l4.7 6.3L18.9 2Zm-1.2 17.9h1.8L7.6 4H5.7l12 15.9Z" /></svg></a></li>
-          <li><a href={socialHref.LinkedIn} aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v12H3v-12Zm6.3 0h3.8v1.6h.1a4.2 4.2 0 0 1 3.8-2.1c4.1 0 4.9 2.7 4.9 6.2v6.3h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9v5.7h-4V9.5Z" /></svg></a></li>
-          <li><a href={socialHref.DJW} aria-label="DailyJapanWisdom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 5.3 7 11 7 11s7-5.7 7-11a7 7 0 0 0-7-7Zm0 2a5 5 0 0 1 5 5c0 3.2-3.2 6.9-5 8.8C10.2 16.9 7 13.2 7 10a5 5 0 0 1 5-5Zm0 2.5A2.5 2.5 0 1 0 12 12a2.5 2.5 0 0 0 0-5Z" /></svg></a></li>
+      <footer class="site-footer">
+        <ul class="footer-links" aria-label="Footer social links">
+          <li><a href={socialHref.Twitter}>X</a></li>
+          <li><a href={socialHref.LinkedIn}>LinkedIn</a></li>
+          <li><a href={socialHref.DJW}>DailyJapanWisdom</a></li>
         </ul>
-        <a class="license-link" href="https://github.com/julianxdotnet/website">Code on GitHub</a>
+        <a href="https://github.com/julianxdotnet/website">Code on GitHub</a>
       </footer>
     </div>
   </body>
