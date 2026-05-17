@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { dailyJapanWisdom, justWisdom, socials, work } from "@/data/site";
+import { dailyJapanWisdom, socials, work } from "@/data/site";
 
 const title = "Julian";
 const description = "Julian: entertainment, technology, AI, Japan, and daily wisdom.";
@@ -22,7 +22,6 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
         <a class="site-title" href="/">Julian</a>
         <nav class="site-nav" aria-label="Primary">
           <a href="#posts">Posts</a>
-          <a href="#wisdom">Wisdom</a>
           <a href="#about">About</a>
           <a href="#search" aria-label="Search">⌕</a>
           <span class="theme-dot" aria-hidden="true"></span>
@@ -70,7 +69,7 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
         </section>
 
         <section id="posts" class="post-section" aria-labelledby="posts-title">
-          <h2 id="posts-title">Featured</h2>
+          <h2 id="posts-title">Posts</h2>
           <ul class="post-list">
             {dailyJapanWisdom.map((post) => (
               <li class="post-item">
@@ -78,18 +77,6 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
                 <p class="post-meta">Published: {post.date} <span>•</span> X post</p>
                 <p class="post-reading">{post.reading}</p>
                 <p>{post.english}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="wisdom" class="post-section" aria-labelledby="wisdom-title">
-          <h2 id="wisdom-title">Recent Wisdom</h2>
-          <ul class="post-list">
-            {justWisdom.map((item) => (
-              <li class="post-item">
-                <h3>{item.quote}</h3>
-                <p class="post-meta">{item.attribution}</p>
               </li>
             ))}
           </ul>
