@@ -1,6 +1,6 @@
 export const socials = [
   { label: "Twitter", href: "https://x.com/_julianx" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
+  { label: "Instagram", href: "https://www.instagram.com/juliantokyo/" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/julianlaihung/" },
   { label: "DJW", href: "https://dailyjapanwisdom.com" },
 ];
