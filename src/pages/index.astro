@@ -89,10 +89,22 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
       </main>
 
       <footer class="site-footer">
-        <ul class="footer-links" aria-label="Footer social links">
-          <li><a href={socialHref.Twitter}>X</a></li>
-          <li><a href={socialHref.LinkedIn}>LinkedIn</a></li>
-          <li><a href={socialHref.DJW}>DailyJapanWisdom</a></li>
+        <ul class="footer-links social-links" aria-label="Footer social links">
+          <li>
+            <a href={socialHref.Twitter} aria-label="Julian on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.9l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.7 3.9h-2L17.7 20Z"></path></svg>
+            </a>
+          </li>
+          <li>
+            <a href={socialHref.LinkedIn} aria-label="Julian on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8.8H3.6V20h3.3V8.8ZM5.2 7.3a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM20.4 20h-3.3v-5.8c0-1.4-.5-2.3-1.7-2.3-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V20h-3.3s.1-10.1 0-11.2h3.3v1.6c.4-.7 1.2-1.8 3-1.8 2.2 0 3.8 1.4 3.8 4.5V20Z"></path></svg>
+            </a>
+          </li>
+          <li>
+            <a href={socialHref.Instagram} aria-label="Julian on Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.8A4.2 4.2 0 1 1 12 16.2 4.2 4.2 0 0 1 12 7.8Zm0 2A2.2 2.2 0 1 0 12 14.2 2.2 2.2 0 0 0 12 9.8Zm4.8-3.1a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z"></path></svg>
+            </a>
+          </li>
         </ul>
       </footer>
     </div>
