@@ -17,89 +17,94 @@ const description = "Julian: entertainment, technology, AI, Japan, and daily wis
   <body>
     <div class="site">
       <nav class="topnav" aria-label="Primary">
-        <a href="/" aria-label="Julian home">Julian</a>
+        <a class="brand" href="/" aria-label="Julian home">Julian</a>
         <div class="navlinks">
           <a href="#work">Work</a>
-          <a href="#dailyjapanwisdom">DailyJapanWisdom</a>
-          <a href="#justwisdom">JustWisdom</a>
+          <a href="#dailyjapanwisdom">DJW</a>
+          <a href="#justwisdom">Wisdom</a>
         </div>
       </nav>
 
       <main>
-        <section class="intro-grid" aria-labelledby="intro-title">
-          <div>
-            <h1 id="intro-title">Julian</h1>
-            <p class="jp-name">ジュリアンです</p>
-
-            <div class="statement compact-statement">
-              <p>Building where entertainment meets technology, from the early internet to AI. Global perspective, Tokyo base, lifelong learner. Team humanity.</p>
-              <div class="statement-jp" lang="ja">
-                <p>異文化理解力を大切に、東京を拠点に、インターネット黎明期からAIまで、エンターテインメントとテクノロジーの交差点で歩んできました。</p>
-              </div>
-            </div>
+        <section class="hero" aria-labelledby="intro-title">
+          <p class="kicker">ジュリアンです</p>
+          <h1 id="intro-title">Hi, I'm Julian.</h1>
+          <div class="statement">
+            <p>Building where entertainment meets technology, from the early internet to AI. Global perspective, Tokyo base, lifelong learner. Team humanity.</p>
+            <p lang="ja">異文化理解力を大切に、東京を拠点に、インターネット黎明期からAIまで、エンターテインメントとテクノロジーの交差点で歩んできました。</p>
           </div>
 
-          <aside aria-labelledby="socials-title">
-            <h2 class="side-title" id="socials-title">Socials</h2>
-            <ul class="social-list">
-              {socials.map((social) => <li><a href={social.href}>{social.label}</a></li>)}
-            </ul>
-          </aside>
+          <ul class="social-list" aria-label="Socials">
+            {socials.map((social) => <li><a href={social.href}>{social.label}</a></li>)}
+          </ul>
         </section>
 
         <hr class="rule" />
 
-        <section id="work" aria-labelledby="work-title">
+        <section id="work" class="section" aria-labelledby="work-title">
           <h2 id="work-title">Work</h2>
-          <div class="work-grid" role="list">
-            {work.map((item) => <div class="work-item" role="listitem">{item}</div>)}
-          </div>
+          <p class="section-intro">A path through media, streaming, big tech, startups, and AI.</p>
+          <ul class="work-list" role="list">
+            {work.map((item) => <li>{item}</li>)}
+          </ul>
         </section>
 
         <hr class="rule" />
 
-        <section id="dailyjapanwisdom" aria-labelledby="djw-title">
+        <section id="dailyjapanwisdom" class="section" aria-labelledby="djw-title">
           <div class="section-head">
-            <h2 id="djw-title">DailyJapanWisdom</h2>
+            <div>
+              <h2 id="djw-title">DailyJapanWisdom</h2>
+              <p class="section-intro">Recent Japanese wisdom posts.</p>
+            </div>
             <a class="section-link" href="https://dailyjapanwisdom.com">dailyjapanwisdom.com</a>
           </div>
-          <div class="quote-grid">
+
+          <ol class="post-list">
             {dailyJapanWisdom.map((item) => (
-              <a class="quote-card" href={item.href}>
-                <div>
-                  <div class="quote-main">{item.quote}</div>
-                  <div class="quote-reading">{item.reading}</div>
-                  <p class="quote-english">{item.english}</p>
-                </div>
-                <div class="quote-meta">{item.date} · X post</div>
-              </a>
+              <li>
+                <a class="post-row" href={item.href}>
+                  <div>
+                    <h3>{item.quote}</h3>
+                    <p class="reading">{item.reading}</p>
+                    <p>{item.english}</p>
+                  </div>
+                  <span>{item.date}</span>
+                </a>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
         <hr class="rule" />
 
-        <section id="justwisdom" aria-labelledby="jw-title">
+        <section id="justwisdom" class="section" aria-labelledby="jw-title">
           <h2 id="jw-title">JustWisdom</h2>
-          <div class="quote-grid">
+          <ol class="post-list wisdom-list">
             {justWisdom.map((item) => (
-              <article class="quote-card">
-                <div class="quote-main">“{item.quote}”</div>
-                <div class="quote-meta">{item.attribution}</div>
-              </article>
+              <li>
+                <article class="post-row wisdom-row">
+                  <div>
+                    <h3>“{item.quote}”</h3>
+                    <p>{item.attribution}</p>
+                  </div>
+                </article>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
 
         <hr class="rule" />
 
-        <section aria-labelledby="tokyo-title">
+        <section class="section" aria-labelledby="tokyo-title">
           <h2 id="tokyo-title">Off the Beaten Track Tokyo</h2>
-          <p class="map-note">A personal map list for quiet corners, small discoveries, and Tokyo places worth returning to.</p>
+          <p class="section-intro">A personal map list for quiet corners, small discoveries, and Tokyo places worth returning to.</p>
         </section>
       </main>
 
-      <footer>© 2026 Julian</footer>
+      <footer>
+        <span>© 2026 Julian</span>
+      </footer>
     </div>
   </body>
 </html>
