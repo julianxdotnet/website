@@ -4,10 +4,12 @@ import { dailyJapanWisdom } from "@/data/site";
 export type HomepagePost = {
   title: string;
   date: string;
+  sortDate: string;
   summary: string;
   romaji?: string;
   href: string;
   source?: string;
+  type?: string;
 };
 
 export type HomepageContent = {
@@ -32,14 +34,16 @@ const fallbackContent: HomepageContent = {
   introHeadline: "Hi, I'm Julian.",
   profileEnglish: "Entertainment, technology, AI, Japan, and daily wisdom.",
   profileJapanese: "エンターテインメント、テクノロジー、AI、日本、そして日々の知恵。",
-  postCount: 6,
+  postCount: 7,
   posts: dailyJapanWisdom.map((post) => ({
     title: post.quote,
     date: post.date,
+    sortDate: post.date,
     summary: post.english,
     romaji: post.reading,
     href: post.href,
     source: "@DailyJapanWise",
+    type: "DailyJapanWisdom",
   })),
   sideQuests: [
     {
@@ -61,8 +65,9 @@ const titleText = (property: any) =>
   property?.title?.map((part: any) => part.plain_text).join("") || "";
 const richText = (property: any) =>
   property?.rich_text?.map((part: any) => part.plain_text).join("") || "";
+const sortDateText = (property: any) => property?.date?.start || "";
 const dateText = (property: any) => {
-  const value = property?.date?.start;
+  const value = sortDateText(property);
   if (!value) return "";
 
   return new Intl.DateTimeFormat("en", {
@@ -73,10 +78,27 @@ const dateText = (property: any) => {
   }).format(new Date(`${value}T00:00:00+09:00`));
 };
 
-const numberFromSetting = (value: string, fallback: number) => {
-  const parsed = Number.parseInt(value, 10);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
-};
+const byNewest = (a: HomepagePost, b: HomepagePost) =>
+  b.sortDate.localeCompare(a.sortDate);
+
+function selectHomepagePosts(posts: HomepagePost[]) {
+  const dailyJapanWisdomPosts = posts
+    .filter((post) => post.source === "@DailyJapanWise")
+    .sort(byNewest)
+    .slice(0, 3);
+
+  const personalXPosts = posts
+    .filter((post) => post.source === "@_julianx")
+    .sort(byNewest)
+    .slice(0, 3);
+
+  const manualPosts = posts
+    .filter((post) => post.source === "Website" || post.type === "Essay")
+    .sort(byNewest)
+    .slice(0, 1);
+
+  return [...dailyJapanWisdomPosts, ...personalXPosts, ...manualPosts].sort(byNewest);
+}
 
 async function queryDatabase(client: Client, databaseId: string, options: any = {}) {
   return client.databases.query({ database_id: databaseId, ...options });
@@ -104,11 +126,8 @@ export async function getHomepageContent(): Promise<HomepageContent> {
             { property: "Show on Homepage", checkbox: { equals: true } },
           ],
         },
-        sorts: [
-          { property: "Homepage Rank", direction: "ascending" },
-          { property: "Published Date", direction: "descending" },
-        ],
-        page_size: 20,
+        sorts: [{ property: "Published Date", direction: "descending" }],
+        page_size: 50,
       }),
       queryDatabase(client, sideQuestsDatabaseId, {
         filter: { property: "Show", checkbox: { equals: true } },
@@ -121,28 +140,29 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       settings.set(titleText(page.properties.Name), richText(page.properties.Value));
     }
 
-    const postCount = numberFromSetting(
-      settings.get("Homepage post count") || "",
-      fallbackContent.postCount,
-    );
-
-    const posts = (postsResponse.results as any[])
+    const allPosts = (postsResponse.results as any[])
       .map((page) => {
         const properties = page.properties;
+        const source = properties["Source Account"]?.select?.name;
+        const type = properties.Type?.select?.name;
+
         return {
           title: titleText(properties.Title),
           date: dateText(properties["Published Date"]),
+          sortDate: sortDateText(properties["Published Date"]),
           summary: richText(properties.Summary),
           romaji: richText(properties.Romaji),
           href:
             properties["Canonical URL"]?.url ||
             properties["X Post URL"]?.url ||
             page.url,
-          source: properties["Source Account"]?.select?.name || properties.Type?.select?.name,
+          source: source || type,
+          type,
         };
       })
-      .filter((post) => post.title && post.summary)
-      .slice(0, postCount);
+      .filter((post) => post.title && post.summary && post.sortDate);
+
+    const posts = selectHomepagePosts(allPosts);
 
     const sideQuests = (sideQuestsResponse.results as any[])
       .map((page) => {
@@ -162,7 +182,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       introHeadline: settings.get("Intro headline") || fallbackContent.introHeadline,
       profileEnglish: settings.get("Profile English") || fallbackContent.profileEnglish,
       profileJapanese: settings.get("Profile Japanese") || fallbackContent.profileJapanese,
-      postCount,
+      postCount: 7,
       posts: posts.length ? posts : fallbackContent.posts,
       sideQuests: sideQuests.length ? sideQuests : fallbackContent.sideQuests,
     };
