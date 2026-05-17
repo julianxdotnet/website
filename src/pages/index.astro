@@ -1,9 +1,11 @@
 ---
 import "../styles/global.css";
-import { dailyJapanWisdom, socials } from "@/data/site";
+import { socials } from "@/data/site";
+import { getHomepageContent } from "@/lib/notion";
 
-const title = "Julian Lai-Hung";
-const description = "Julian Lai-Hung: entertainment, technology, AI, Japan, and daily wisdom.";
+const content = await getHomepageContent();
+const title = content.siteTitle;
+const description = `${content.siteTitle}: ${content.profileEnglish}`;
 const socialHref = Object.fromEntries(socials.map((social) => [social.label, social.href]));
 ---
 
@@ -19,7 +21,7 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
     <a class="skip-link" href="#main">Skip to content</a>
     <div class="site-shell">
       <header class="site-header">
-        <a class="site-title" href="/">Julian Lai-Hung</a>
+        <a class="site-title" href="/">{content.siteTitle}</a>
         <nav class="site-nav" aria-label="Primary">
           <a href="#posts">Posts</a>
           <a href="#side-quests">Side Quests</a>
@@ -33,16 +35,16 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
       <main id="main">
         <section class="intro" aria-labelledby="intro-title">
           <a class="avatar-link" href="#side-quests" aria-label="Side Quests">
-            <img src="https://github.com/julianxdotnet.png" alt="Julian Lai-Hung" />
+            <img src="https://github.com/julianxdotnet.png" alt={content.siteTitle} />
           </a>
           <div class="intro-copy">
-            <p class="eyebrow">&#12472;&#12517;&#12522;&#12450;&#12531;&#12391;&#12377;</p>
+            <p class="eyebrow">{content.introEyebrow}</p>
             <h1 id="intro-title">
-              Hi, I'm Julian.
+              {content.introHeadline}
               <a class="rss-link" href="https://dailyjapanwisdom.com" aria-label="DailyJapanWisdom">&#9684;</a>
             </h1>
-            <p class="tagline">Entertainment, technology, AI, Japan, and daily wisdom.</p>
-            <p class="tagline japanese">&#12456;&#12531;&#12479;&#12513;&#12289;&#12486;&#12463;&#12494;&#12525;&#12472;&#12540;&#12289;AI&#12289;&#26085;&#26412;&#12289;&#12381;&#12375;&#12390;&#26085;&#12293;&#12398;&#30693;&#24693;&#12290;</p>
+            <p class="tagline">{content.profileEnglish}</p>
+            <p class="tagline japanese">{content.profileJapanese}</p>
 
             <ul class="social-links" aria-label="Social links">
               <li>
@@ -71,11 +73,15 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
 
         <section id="posts" class="post-section" aria-label="Posts">
           <ul class="post-list">
-            {dailyJapanWisdom.map((post) => (
+            {content.posts.map((post) => (
               <li class="post-item">
-                <a class="post-title" href={post.href}>{post.quote}</a>
-                <p class="post-meta"><span class="calendar" aria-hidden="true">&#9635;</span> {post.date} <span>&bull;</span> {post.reading} <span>&bull;</span> 2 min read</p>
-                <p>{post.english}</p>
+                <a class="post-title" href={post.href}>{post.title}</a>
+                <p class="post-meta">
+                  <span class="calendar" aria-hidden="true">&#9635;</span> {post.date}
+                  {post.romaji ? <><span>&bull;</span> {post.romaji}</> : null}
+                  <span>&bull;</span> 2 min read
+                </p>
+                <p>{post.summary}</p>
               </li>
             ))}
           </ul>
@@ -83,8 +89,12 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
 
         <section id="side-quests" class="about-section" aria-labelledby="side-quests-title">
           <h2 id="side-quests-title">Side Quests</h2>
-          <p>DailyJapanWisdom / Modern Mann-basador for Tokyo</p>
-          <p class="work-line">More to come.</p>
+          {content.sideQuests.map((quest) => (
+            <p class="work-line">
+              {quest.href ? <a href={quest.href}>{quest.name}</a> : <span>{quest.name}</span>}
+              {quest.description ? <span> / {quest.description}</span> : null}
+            </p>
+          ))}
         </section>
       </main>
 
