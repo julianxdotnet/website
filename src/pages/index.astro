@@ -39,10 +39,7 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
           </a>
           <div class="intro-copy">
             <p class="eyebrow">{content.introEyebrow}</p>
-            <h1 id="intro-title">
-              {content.introHeadline}
-              <a class="rss-link" href="https://dailyjapanwisdom.com" aria-label="DailyJapanWisdom">&#9684;</a>
-            </h1>
+            <h1 id="intro-title">{content.introHeadline}</h1>
             <p class="tagline">{content.profileEnglish}</p>
             <p class="tagline japanese">{content.profileJapanese}</p>
 
@@ -60,11 +57,6 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
               <li>
                 <a href={socialHref.LinkedIn} aria-label="Julian on LinkedIn">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8.8H3.6V20h3.3V8.8ZM5.2 7.3a1.9 1.9 0 1 0 0-3.8 1.9 1.9 0 0 0 0 3.8ZM20.4 20h-3.3v-5.8c0-1.4-.5-2.3-1.7-2.3-.9 0-1.5.6-1.7 1.2-.1.2-.1.5-.1.8V20h-3.3s.1-10.1 0-11.2h3.3v1.6c.4-.7 1.2-1.8 3-1.8 2.2 0 3.8 1.4 3.8 4.5V20Z"></path></svg>
-                </a>
-              </li>
-              <li>
-                <a href={socialHref.DJW} aria-label="DailyJapanWisdom">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.8A2.8 2.8 0 1 1 12 6.2a2.8 2.8 0 0 1 0 5.6Z"></path></svg>
                 </a>
               </li>
             </ul>
