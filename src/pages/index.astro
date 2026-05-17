@@ -24,13 +24,13 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
         <a class="site-title" href="/">{content.siteTitle}</a>
         <nav class="site-nav" aria-label="Primary">
           <a href="#posts">Posts</a>
-          <a href="#side-quests">Side Quests</a>
+          <a href="#projects">Projects</a>
         </nav>
       </header>
 
       <main id="main">
         <section class="intro" aria-labelledby="intro-title">
-          <a class="avatar-link" href="#side-quests" aria-label="Side Quests">
+          <a class="avatar-link" href="#projects" aria-label="Projects">
             <img src="https://github.com/julianxdotnet.png" alt={content.siteTitle} />
           </a>
           <div class="intro-copy">
@@ -59,7 +59,8 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
           </div>
         </section>
 
-        <section id="posts" class="post-section" aria-label="Posts">
+        <section id="posts" class="post-section" aria-labelledby="posts-title">
+          <h2 id="posts-title">Posts</h2>
           <ul class="post-list">
             {content.posts.map((post) => (
               <li class="post-item">
@@ -75,8 +76,8 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
           </ul>
         </section>
 
-        <section id="side-quests" class="about-section" aria-labelledby="side-quests-title">
-          <h2 id="side-quests-title">Side Quests</h2>
+        <section id="projects" class="about-section" aria-labelledby="projects-title">
+          <h2 id="projects-title">Projects</h2>
           {content.sideQuests.map((quest) => (
             <p class="work-line">
               {quest.href ? <a href={quest.href}>{quest.name}</a> : <span>{quest.name}</span>}
