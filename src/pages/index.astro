@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { dailyJapanWisdom, socials, work } from "@/data/site";
+import { dailyJapanWisdom, socials } from "@/data/site";
 
 const title = "Julian Lai-Hung";
 const description = "Julian Lai-Hung: entertainment, technology, AI, Japan, and daily wisdom.";
@@ -22,7 +22,7 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
         <a class="site-title" href="/">Julian Lai-Hung</a>
         <nav class="site-nav" aria-label="Primary">
           <a href="#posts">Posts</a>
-          <a href="#about">About</a>
+          <a href="#side-quests">Side Quests</a>
           <a class="icon-link search-link" href="#search" aria-label="Search">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.8 4a6.8 6.8 0 1 1 0 13.6 6.8 6.8 0 0 1 0-13.6Zm0 2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6Zm4.9 9.1 4.3 4.3-1.4 1.4-4.3-4.3 1.4-1.4Z"></path></svg>
           </a>
@@ -32,24 +32,19 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
 
       <main id="main">
         <section class="intro" aria-labelledby="intro-title">
-          <a class="avatar-link" href="#about" aria-label="About Julian">
+          <a class="avatar-link" href="#side-quests" aria-label="Side Quests">
             <img src="https://github.com/julianxdotnet.png" alt="Julian Lai-Hung" />
           </a>
           <div class="intro-copy">
-            <p class="eyebrow">ジュリアンです</p>
+            <p class="eyebrow">&#12472;&#12517;&#12522;&#12450;&#12531;&#12391;&#12377;</p>
             <h1 id="intro-title">
               Hi, I'm Julian.
-              <a class="rss-link" href="https://dailyjapanwisdom.com" aria-label="DailyJapanWisdom">◔</a>
+              <a class="rss-link" href="https://dailyjapanwisdom.com" aria-label="DailyJapanWisdom">&#9684;</a>
             </h1>
             <p class="tagline">Entertainment, technology, AI, Japan, and daily wisdom.</p>
-            <p class="tagline japanese">エンタメ、テクノロジー、AI、日本、そして日々の知恵。</p>
+            <p class="tagline japanese">&#12456;&#12531;&#12479;&#12513;&#12289;&#12486;&#12463;&#12494;&#12525;&#12472;&#12540;&#12289;AI&#12289;&#26085;&#26412;&#12289;&#12381;&#12375;&#12390;&#26085;&#12293;&#12398;&#30693;&#24693;&#12290;</p>
 
             <ul class="social-links" aria-label="Social links">
-              <li>
-                <a href="https://github.com/julianxdotnet/website" aria-label="Julian on GitHub">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.5 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.3-.3-4.7-1.2-4.7-5A3.9 3.9 0 0 1 6.6 8.7c-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1a9.7 9.7 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.3.8 1 .8 2v2.6c0 .3.2.6.8.5A10 10 0 0 0 12 2Z"></path></svg>
-                </a>
-              </li>
               <li>
                 <a href={socialHref.Twitter} aria-label="Julian on X">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2h3.3l-7.3 8.3L23.5 22h-6.7l-5.2-6.8L5.6 22H2.3l7.8-8.9L1.8 2h6.9l4.7 6.2L18.9 2Zm-1.2 18h1.8L7.7 3.9h-2L17.7 20Z"></path></svg>
@@ -79,31 +74,26 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
             {dailyJapanWisdom.map((post) => (
               <li class="post-item">
                 <a class="post-title" href={post.href}>{post.quote}</a>
-                <p class="post-meta"><span class="calendar" aria-hidden="true">▣</span> {post.date} <span>•</span> 2 min read</p>
+                <p class="post-meta"><span class="calendar" aria-hidden="true">&#9635;</span> {post.date} <span>&bull;</span> {post.reading} <span>&bull;</span> 2 min read</p>
                 <p>{post.english}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="about" class="about-section" aria-labelledby="about-title">
-          <h2 id="about-title">About</h2>
-          <p>
-            Film, TV, big tech, startups and AI. London / Paris / Singapore / Los Angeles /
-            Philadelphia / Tokyo. English / French / Japanese.
-          </p>
-          <p class="work-line">{work.join(" / ")}</p>
+        <section id="side-quests" class="about-section" aria-labelledby="side-quests-title">
+          <h2 id="side-quests-title">Side Quests</h2>
+          <p>DailyJapanWisdom / Modern Mann-basador for Tokyo</p>
+          <p class="work-line">More to come.</p>
         </section>
       </main>
 
       <footer class="site-footer">
         <ul class="footer-links" aria-label="Footer social links">
-          <li><a href="https://github.com/julianxdotnet/website">GitHub</a></li>
           <li><a href={socialHref.Twitter}>X</a></li>
           <li><a href={socialHref.LinkedIn}>LinkedIn</a></li>
           <li><a href={socialHref.DJW}>DailyJapanWisdom</a></li>
         </ul>
-        <a href="https://github.com/julianxdotnet/website">Steipete-inspired Astro site</a>
       </footer>
     </div>
   </body>
