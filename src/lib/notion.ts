@@ -78,6 +78,23 @@ const dateText = (property: any) => {
   }).format(new Date(`${value}T00:00:00+09:00`));
 };
 
+const normalizeUrl = (url?: string) => {
+  const value = url?.trim();
+  if (!value) return undefined;
+  if (/^https?:\/\//i.test(value) || value.startsWith("/")) return value;
+  return `https://${value}`;
+};
+
+const propertyUrl = (properties: any, names: string[]) => {
+  for (const name of names) {
+    const value = properties[name]?.url || properties[name]?.rich_text?.[0]?.plain_text;
+    const normalized = normalizeUrl(value);
+    if (normalized) return normalized;
+  }
+
+  return undefined;
+};
+
 const byNewest = (a: HomepagePost, b: HomepagePost) =>
   b.sortDate.localeCompare(a.sortDate);
 
@@ -153,8 +170,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
           summary: richText(properties.Summary),
           romaji: richText(properties.Romaji),
           href:
-            properties["Canonical URL"]?.url ||
-            properties["X Post URL"]?.url ||
+            propertyUrl(properties, ["Canonical URL", "X Post URL"]) ||
             page.url,
           source: source || type,
           type,
@@ -169,7 +185,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
         const properties = page.properties;
         return {
           name: titleText(properties.Name),
-          href: properties.URL?.url,
+          href: propertyUrl(properties, ["URL", "Url", "url", "Project URL", "Website"]),
           description: richText(properties.Description),
           status: properties.Status?.select?.name,
         };
