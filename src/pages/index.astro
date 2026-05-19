@@ -83,9 +83,9 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
           {content.sideQuests.map((quest) => (
             <p class="work-line">
               {quest.href ? (
-                <a class="project-title" href={quest.href}>{quest.name}</a>
+                <a href={quest.href} style="color: var(--accent); font-weight: 600;">{quest.name}</a>
               ) : (
-                <span class="project-title">{quest.name}</span>
+                <span style="color: var(--accent); font-weight: 600;">{quest.name}</span>
               )}
               {quest.description ? <span> / {quest.description}</span> : null}
             </p>
