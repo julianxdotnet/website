@@ -1,0 +1,4 @@
+Deploy trigger created by sync-x-posts-to-personal-site-cms automation.
+
+Timestamp: 2026-05-21T06:42:50+0900
+Reason: Publish Requested in Notion CMS.
