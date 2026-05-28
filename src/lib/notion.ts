@@ -170,7 +170,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
           summary: richText(properties.Summary),
           romaji: richText(properties.Romaji),
           href:
-            propertyUrl(properties, ["Canonical URL", "X Post URL"]) ||
+            propertyUrl(properties, ["X Post URL", "Canonical URL"]) ||
             page.url,
           source: source || type,
           type,
