@@ -1,0 +1,2 @@
+Deploy trigger marker created by sync-x-posts-to-personal-site-cms at 2026-05-31T00:44:09+09:00.
+Reason: DJW freshness guard created/updated rows.
