@@ -1,0 +1,2 @@
+Deploy trigger: DJW Notion sync created/updated content.
+Run timestamp (JST): 2026-06-02T01:42:27+0900
