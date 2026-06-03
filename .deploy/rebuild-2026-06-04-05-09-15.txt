@@ -1,0 +1,2 @@
+Triggered by Codex automation sync-x-posts-to-personal-site-cms at 2026-06-04T05:09:15+09:00 JST.
+Reason: Personal Site Posts CMS already includes DailyJapanWisdom row djw-2026-06-04 (猫に小判) while Notion publish control Last Published still reflected 2026-06-03T02:39:49+09:00.
