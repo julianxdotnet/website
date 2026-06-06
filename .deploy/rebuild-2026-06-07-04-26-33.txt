@@ -1,0 +1,2 @@
+Triggered by Codex automation on 2026-06-07T04:26:33+09:00 Asia/Tokyo.
+Reason: DailyJapanWisdom CMS already includes published homepage row djw-2026-06-07 (郷に入っては郷に従え); rebuild requested to keep live site in sync.
