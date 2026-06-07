@@ -1,0 +1,14 @@
+Triggered by automation sync-x-posts-to-personal-site-cms at 2026-06-08 00:24 JST.
+
+CMS changes synced:
+- Notion page 378b4375-a6f4-812a-907d-faef009b6211
+- Slug: djw-2026-06-08
+- Source Account: @DailyJapanWise
+- Published Date: 2026-06-08
+- X status ID: unavailable (no verifiable public X URL in this run)
+
+Personal X status IDs synced this run:
+- none
+
+DailyJapanWise X status IDs synced this run:
+- none
