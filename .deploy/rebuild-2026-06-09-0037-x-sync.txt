@@ -1,0 +1,8 @@
+Fallback X timeline sync run at 2026-06-09 00:37:03 JST.
+
+CMS changes:
+- Created Personal Site Posts row for DJW fallback entry `djw-2026-06-09`
+- Title: 必要は発明の母
+- Notion page: https://app.notion.com/p/379b4375a6f48133bd14eea3e442192e
+- Verifiable public X status IDs synced this run: none
+- Reason: direct navigation to https://x.com/_julianx and https://x.com/DailyJapanWise was blocked by Chrome browser security policy, so DJW was backfilled from the local CSV without inventing an X Post URL.
