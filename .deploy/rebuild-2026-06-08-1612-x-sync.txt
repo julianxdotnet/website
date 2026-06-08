@@ -1,0 +1,9 @@
+X/DJW fallback sync run at 2026-06-08 16:12:56 JST.
+
+Updated Notion rows:
+- djw-2026-06-07 (page 377b4375-a6f4-81e8-b4d4-f951c62dfd3c): set Status=Published, Show on Homepage=__YES__, Featured=__NO__.
+
+Status IDs synced:
+- No new X status IDs were available in this run.
+- Direct inspection of https://x.com/_julianx and https://x.com/DailyJapanWise remained blocked by Chrome session security policy.
+- DailyJapanWise fallback used the local CSV row for 2026-06-07 without inventing an X Post URL.
