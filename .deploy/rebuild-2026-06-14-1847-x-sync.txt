@@ -1,0 +1,13 @@
+Fallback X timeline sync run on 2026-06-14 18:47 JST.
+
+Created Notion rows from local DailyJapanWise CSV fallback because direct x.com profile inspection is explicitly blocked by browser security policy in this environment.
+
+Created DJW rows:
+- djw-2026-06-10
+- djw-2026-06-11
+- djw-2026-06-12
+- djw-2026-06-13
+- djw-2026-06-14
+
+No X status IDs were available for these backfilled DJW rows, so no X Post URL was set.
+Personal @_julianx timeline remains unchecked this run beyond the last-known carried status IDs because x.com navigation is blocked.
