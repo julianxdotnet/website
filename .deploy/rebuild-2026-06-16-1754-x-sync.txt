@@ -1,0 +1,11 @@
+Fallback X timeline sync run on 2026-06-16 17:54:15 JST.
+
+Live X profile inspection remained blocked by Chrome browser security policy for https://x.com, so no personal @_julianx or DailyJapanWise status IDs were available from visible timelines this run.
+
+Created DailyJapanWise CMS rows from local CSV fallback for these entries:
+- 2024-11-02 | 雲外蒼天 | Notion page 381b4375-a6f4-813a-a4b4-d9e0d822eef9
+- 2024-11-01 | 人を呪わば穴二つ | Notion page 381b4375-a6f4-811a-969d-f9a7cc3e1f8e
+- 2024-10-31 | 花より団子 | Notion page 381b4375-a6f4-8180-b7e3-e53d8e7b92ec
+- 2024-10-30 | 猫に小判 | Notion page 381b4375-a6f4-8134-9154-d40871d98b43
+- 2024-10-28 | 贈り物は心の一部 | Notion page 381b4375-a6f4-8195-bbb2-e14a7f75334c
+- 2024-10-27 | 知識は力なり | Notion page 381b4375-a6f4-81b0-938f-cb30777aeb77
