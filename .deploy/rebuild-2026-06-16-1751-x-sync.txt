@@ -1,0 +1,10 @@
+Fallback X timeline sync run on 2026-06-16 17:51:08 JST.
+
+Bridge status: no new publish-time X status URL found after 2026-06-16T04:55:37.205Z.
+Chrome/X inspection: blocked by browser security policy for https://x.com, so no live _julianx or DailyJapanWise status IDs were available.
+
+Notion rows created from DailyJapanWise CSV fallback:
+- 381b4375-a6f4-818b-b409-e5bea22b57cf | 2024-11-04 | 芸術は長く人生は短し
+- 381b4375-a6f4-81c8-aa7d-f65e86659096 | 2024-11-02 | 二兎を追う者は一兎をも得ず
+
+No X status IDs were synced in this fallback run because no verified public X URLs were available.
