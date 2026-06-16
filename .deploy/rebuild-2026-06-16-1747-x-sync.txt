@@ -1,0 +1,8 @@
+Fallback X timeline sync run on 2026-06-16 17:47 JST.
+
+Live x.com timeline inspection was explicitly blocked by browser security policy, so this run used the allowed DailyJapanWise CSV fallback and synced these newly created Notion rows without inventing X Post URLs or X status IDs:
+- 381b4375-a6f4-8194-a9f1-e2dbc2b98808 | 2024-11-10 | 見ぬ京物語
+- 381b4375-a6f4-81cb-a0e8-e8cf5d409458 | 2024-11-09 | 紺屋の白袴
+- 381b4375-a6f4-81e5-a3c1-c11cc8ee2db3 | 2024-11-08 | 七転び八起き
+- 381b4375-a6f4-81df-912d-da17fb6290d6 | 2024-11-07 | 猿も木から落ちる
+- 381b4375-a6f4-8142-9140-dcf9b972b5e9 | 2024-11-06 | 釈迦に説法
