@@ -1,0 +1,10 @@
+Triggered by fallback X timeline sync automation on 2026-06-16 14:37:24 JST.
+
+Live X timeline inspection was blocked by browser security policy for https://x.com, so this rebuild reflects DailyJapanWise CSV fallback rows created in Notion without invented X Post URLs or status IDs.
+
+Rows synced:
+- 2024-11-17 | 千里の道も一歩から | Notion page 381b4375-a6f4-81ec-9663-fc7c79cf5e4b
+- 2024-11-15 | 子はかすがい | Notion page 381b4375-a6f4-8153-8451-e2dd835d5797
+- 2024-11-14 | 光陰矢の如し | Notion page 381b4375-a6f4-819b-8d2f-d07cc9a61641
+- 2024-11-13 | 勝って兜の緒を締めよ | Notion page 381b4375-a6f4-81a6-8403-d1ffabecd506
+- 2024-11-11 | 武道の極意は、使わぬことにある | Notion page 381b4375-a6f4-8192-b21f-f413fc491784
