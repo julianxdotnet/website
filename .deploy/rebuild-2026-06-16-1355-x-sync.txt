@@ -1,0 +1,12 @@
+Fallback X timeline sync run: 2026-06-16 13:55:56 JST
+
+Created Personal Site Posts CMS rows from DailyJapanWise CSV fallback because direct x.com timeline inspection was explicitly blocked by browser policy.
+
+Created Notion pages:
+- 381b4375-a6f4-81a7-bcfb-d5cf55401264 | 2024-09-17 | 勝ち負けを思わず、ただ戦いに身を委ねよ。
+- 381b4375-a6f4-814b-8975-e1c1cea9f6e0 | 2024-09-17 | 暑さ寒さも彼岸まで
+- 381b4375-a6f4-813b-9cc8-ee22f70717dd | 2024-09-18 | 秋来ぬと目にはさやかに見えねども
+
+Status IDs synced this run:
+- _julianx: none; x.com inspection blocked by browser security policy
+- DailyJapanWise: no X status IDs available in CSV fallback, so no X Post URL values were written
