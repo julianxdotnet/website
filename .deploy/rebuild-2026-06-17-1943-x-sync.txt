@@ -1,0 +1,8 @@
+X timeline fallback sync run on 2026-06-17 19:43 JST.
+
+Created CMS rows for these X status IDs:
+- @_julianx: 2066418970090152287
+- @DailyJapanWise: 2067004320332283916
+- @DailyJapanWise: 2066641935478214724
+- @DailyJapanWise: 2066279543942631837
+- @DailyJapanWise: 2065917158744600892
