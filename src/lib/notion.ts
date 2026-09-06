@@ -10,7 +10,6 @@ export type HomepagePost = {
   href: string;
   source?: string;
   type?: string;
-  coverUrl?: string;
 };
 
 export type HomepageContent = {
@@ -96,25 +95,6 @@ const propertyUrl = (properties: any, names: string[]) => {
   return undefined;
 };
 
-const stableCoverUrl = (page: any): string | undefined => {
-  // Static pages outlive Notion's signed file URLs. Publish approved artwork
-  // at a stable public HTTPS URL and set it as an external Notion page cover.
-  if (page.cover?.type !== "external") return undefined;
-
-  try {
-    const url = new URL(page.cover.external.url);
-    const isSigned = [...url.searchParams.keys()].some((key) =>
-      /^(x-amz-|x-goog-|expires$|signature$|sig$|token$)/i.test(key),
-    );
-    if (url.protocol !== "https:" || url.username || url.password || isSigned) {
-      return undefined;
-    }
-    return url.href;
-  } catch {
-    return undefined;
-  }
-};
-
 const byNewest = (a: HomepagePost, b: HomepagePost) =>
   b.sortDate.localeCompare(a.sortDate);
 
@@ -194,10 +174,6 @@ export async function getHomepageContent(): Promise<HomepageContent> {
             page.url,
           source: source || type,
           type,
-          coverUrl:
-            type === "DailyJapanWisdom" || source === "@DailyJapanWise"
-              ? stableCoverUrl(page)
-              : undefined,
         };
       })
       .filter((post) => post.title && post.summary && post.sortDate);

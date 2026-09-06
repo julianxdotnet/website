@@ -255,14 +255,6 @@ h1 {
     gap: 0.35rem;
 }
 
-.post-artwork {
-    width: 100%;
-    height: auto;
-    margin: 0.4rem 0 0.5rem;
-    border: 1px solid var(--line);
-    border-radius: 0.25rem;
-}
-
 .post-title {
     width: fit-content;
     color: var(--accent);
