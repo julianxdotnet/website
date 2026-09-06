@@ -1,0 +1,5 @@
+Refresh julianx.net project list after adding japanreal39 to the Projects CMS.
+
+Project: japanreal39
+URL: https://japanreal39.julianintokyo.chatgpt.site
+Requested: add to the projects list at the bottom of julianx.net.
