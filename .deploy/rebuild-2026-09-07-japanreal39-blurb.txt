@@ -1,0 +1,5 @@
+Refresh julianx.net project list after updating the japanreal39 CMS blurb.
+
+Project: japanreal39
+URL: https://japanreal39.julianintokyo.chatgpt.site
+Blurb: tracking gratitude in Japan by measuring the number of 'honto ni arigatos' on X
