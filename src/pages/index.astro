@@ -66,6 +66,18 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
           <ul class="post-list">
             {content.posts.map((post) => (
               <li class="post-item">
+                {post.coverUrl ? (
+                  <img
+                    class="post-artwork"
+                    src={post.coverUrl}
+                    alt={`「${post.title}」の日本語と英訳を載せたDailyJapanWisdomの投稿画像`}
+                    lang="ja"
+                    width="1200"
+                    height="630"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : null}
                 <a class="post-title" href={post.href}>{post.title}</a>
                 <p class="post-meta">
                   <span class="calendar" aria-hidden="true">&#9635;</span> {post.date}

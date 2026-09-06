@@ -255,6 +255,14 @@ h1 {
     gap: 0.35rem;
 }
 
+.post-artwork {
+    width: 100%;
+    height: auto;
+    margin: 0.4rem 0 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 0.25rem;
+}
+
 .post-title {
     width: fit-content;
     color: var(--accent);
@@ -356,7 +364,7 @@ h1 {
     color: var(--accent);
 }
 
-@media (max-width: 720px) {.    .site-shell {
+@media (max-width: 720px) {    .site-shell {
       width: min(100% - 1.35rem, var(--max));
       padding-top: 1.2rem;
 }
