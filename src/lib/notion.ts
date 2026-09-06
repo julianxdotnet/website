@@ -60,7 +60,8 @@ const fallbackContent: HomepageContent = {
   ],
 };
 
-const env = (key: string) => import.meta.env[key] as string | undefined;
+const env = (key: string) =>
+  (process.env[key] || (import.meta.env[key] as string | undefined))?.trim();
 const titleText = (property: any) =>
   property?.title?.map((part: any) => part.plain_text).join("") || "";
 const richText = (property: any) =>
@@ -69,13 +70,17 @@ const sortDateText = (property: any) => property?.date?.start || "";
 const dateText = (property: any) => {
   const value = sortDateText(property);
   if (!value) return "";
+  const date = new Date(
+    /^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00+09:00` : value,
+  );
+  if (Number.isNaN(date.getTime())) return "";
 
   return new Intl.DateTimeFormat("en", {
     month: "short",
     day: "numeric",
     year: "numeric",
     timeZone: "Asia/Tokyo",
-  }).format(new Date(`${value}T00:00:00+09:00`));
+  }).format(date);
 };
 
 const normalizeUrl = (url?: string) => {
@@ -93,6 +98,26 @@ const propertyUrl = (properties: any, names: string[]) => {
   }
 
   return undefined;
+};
+
+const dailyJapanWisdomUrl = (properties: any) => {
+  const value = propertyUrl(properties, ["X Post URL"]);
+  if (!value) return undefined;
+
+  try {
+    const url = new URL(value);
+    const status = url.pathname.match(/^\/DailyJapanWise\/status\/([1-9]\d*)\/?$/i);
+    if (
+      url.protocol !== "https:" ||
+      url.username || url.password || url.port ||
+      !["x.com", "www.x.com", "twitter.com", "www.twitter.com"].includes(url.hostname) ||
+      !status
+    ) return undefined;
+
+    return `https://x.com/DailyJapanWise/status/${status[1]}`;
+  } catch {
+    return undefined;
+  }
 };
 
 const byNewest = (a: HomepagePost, b: HomepagePost) =>
@@ -122,12 +147,17 @@ async function queryDatabase(client: Client, databaseId: string, options: any = 
 }
 
 export async function getHomepageContent(): Promise<HomepageContent> {
+  // Pages injects CF_PAGES=1. Never deploy preview fallback over approved CMS content.
+  const requiresCms = env("CF_PAGES") === "1";
   const notionToken = env("NOTION_TOKEN");
   const settingsDatabaseId = env("NOTION_SITE_SETTINGS_DATABASE_ID");
   const postsDatabaseId = env("NOTION_POSTS_DATABASE_ID");
   const sideQuestsDatabaseId = env("NOTION_SIDE_QUESTS_DATABASE_ID");
 
   if (!notionToken || !settingsDatabaseId || !postsDatabaseId || !sideQuestsDatabaseId) {
+    if (requiresCms) {
+      throw new Error("Cloudflare Pages build stopped: required Notion CMS configuration is missing.");
+    }
     return fallbackContent;
   }
 
@@ -162,6 +192,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
         const properties = page.properties;
         const source = properties["Source Account"]?.select?.name;
         const type = properties.Type?.select?.name;
+        const isDailyJapanWisdom = source === "@DailyJapanWise" || type === "DailyJapanWisdom";
 
         return {
           title: titleText(properties.Title),
@@ -169,14 +200,16 @@ export async function getHomepageContent(): Promise<HomepageContent> {
           sortDate: sortDateText(properties["Published Date"]),
           summary: richText(properties.Summary),
           romaji: richText(properties.Romaji),
-          href:
-            propertyUrl(properties, ["X Post URL", "Canonical URL"]) ||
-            page.url,
+          href: isDailyJapanWisdom
+            ? dailyJapanWisdomUrl(properties)
+            : propertyUrl(properties, ["X Post URL", "Canonical URL"]) || page.url,
           source: source || type,
           type,
         };
       })
-      .filter((post) => post.title && post.summary && post.sortDate);
+      .filter((post) =>
+        Boolean(post.title && post.summary && post.date && post.sortDate && post.href),
+      );
 
     const posts = selectHomepagePosts(allPosts);
 
@@ -199,11 +232,14 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       profileEnglish: settings.get("Profile English") || fallbackContent.profileEnglish,
       profileJapanese: settings.get("Profile Japanese") || fallbackContent.profileJapanese,
       postCount: 7,
-      posts: posts.length ? posts : fallbackContent.posts,
+      posts,
       sideQuests: sideQuests.length ? sideQuests : fallbackContent.sideQuests,
     };
-  } catch (error) {
-    console.warn("Using fallback content because Notion CMS could not be loaded.", error);
+  } catch {
+    if (requiresCms) {
+      throw new Error("Cloudflare Pages build stopped: Notion CMS could not be loaded.");
+    }
+    console.warn("Using local preview fallback because Notion CMS could not be loaded.");
     return fallbackContent;
   }
 }
