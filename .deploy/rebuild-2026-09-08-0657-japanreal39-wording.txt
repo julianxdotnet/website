@@ -1,0 +1,6 @@
+Refresh the JapanReal39 project listing from Notion.
+Name: JapanReal39
+Blurb:
+tracking daily gratitude in Japan by measuring the number of 'honto ni arigatos' on X
+Expressing public gratitude as a living object
+39 = pronounced 'sankyu' in Japanese = thank you.
