@@ -1,0 +1,1 @@
+Refresh JapanReal39 project description from Notion: remove the line break before the final pronunciation sentence so the blurb is one continuous paragraph.
