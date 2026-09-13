@@ -1,0 +1,1 @@
+Rebuild after updating Team Humanity description in Notion CMS.
