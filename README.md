@@ -54,3 +54,11 @@ approved English/lesson blurb underneath. They do not render post artwork or an
 embedded X preview. Retain the shared hosted website PNG while
 dailyjapanwisdom.com uses it. Instagram, X and dailyjapanwisdom.com retain their
 separately approved artwork.
+
+The homepage keeps its three newest DJW entries in the main list. “More
+DailyJapanWisdom” opens the remaining entries from the latest 30 eligible DJW
+posts, using a native keyboard-accessible disclosure with no client JavaScript.
+The CMS query follows every page before applying source quotas, so interleaved
+personal posts cannot hide older DJW entries. Publication/visibility gates and
+verified-X-link requirements apply equally to both lists. Personal X retains its
+separate three-entry preview.

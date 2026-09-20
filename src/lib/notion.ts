@@ -1,16 +1,7 @@
 import { Client } from "@notionhq/client";
 import { dailyJapanWisdom } from "@/data/site";
-
-export type HomepagePost = {
-  title: string;
-  date: string;
-  sortDate: string;
-  summary: string;
-  romaji?: string;
-  href: string;
-  source?: string;
-  type?: string;
-};
+import { collectPages, selectPostLists, type HomepagePost } from "./post-selection";
+export type { HomepagePost } from "./post-selection";
 
 export type HomepageContent = {
   siteTitle: string;
@@ -20,6 +11,7 @@ export type HomepageContent = {
   profileJapanese: string;
   postCount: number;
   posts: HomepagePost[];
+  moreDailyJapanWisdom: HomepagePost[];
   sideQuests: Array<{
     name: string;
     href?: string;
@@ -35,6 +27,7 @@ const fallbackContent: HomepageContent = {
   profileEnglish: "Entertainment, technology, AI, Japan, and daily wisdom.",
   profileJapanese: "エンターテインメント、テクノロジー、AI、日本、そして日々の知恵。",
   postCount: 7,
+  moreDailyJapanWisdom: [],
   posts: dailyJapanWisdom.map((post) => ({
     title: post.quote,
     date: post.date,
@@ -120,28 +113,6 @@ const dailyJapanWisdomUrl = (properties: any) => {
   }
 };
 
-const byNewest = (a: HomepagePost, b: HomepagePost) =>
-  b.sortDate.localeCompare(a.sortDate);
-
-function selectHomepagePosts(posts: HomepagePost[]) {
-  const dailyJapanWisdomPosts = posts
-    .filter((post) => post.source === "@DailyJapanWise")
-    .sort(byNewest)
-    .slice(0, 3);
-
-  const personalXPosts = posts
-    .filter((post) => post.source === "@_julianx")
-    .sort(byNewest)
-    .slice(0, 3);
-
-  const manualPosts = posts
-    .filter((post) => post.source === "Website" || post.type === "Essay")
-    .sort(byNewest)
-    .slice(0, 1);
-
-  return [...dailyJapanWisdomPosts, ...personalXPosts, ...manualPosts].sort(byNewest);
-}
-
 async function queryDatabase(client: Client, databaseId: string, options: any = {}) {
   return client.databases.query({ database_id: databaseId, ...options });
 }
@@ -166,7 +137,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
   try {
     const [settingsResponse, postsResponse, sideQuestsResponse] = await Promise.all([
       queryDatabase(client, settingsDatabaseId),
-      queryDatabase(client, postsDatabaseId, {
+      collectPages((start_cursor) => queryDatabase(client, postsDatabaseId, {
         filter: {
           and: [
             { property: "Status", select: { equals: "Published" } },
@@ -174,8 +145,9 @@ export async function getHomepageContent(): Promise<HomepageContent> {
           ],
         },
         sorts: [{ property: "Published Date", direction: "descending" }],
-        page_size: 50,
-      }),
+        page_size: 100,
+        ...(start_cursor ? { start_cursor } : {}),
+      })),
       queryDatabase(client, sideQuestsDatabaseId, {
         filter: { property: "Show", checkbox: { equals: true } },
         sorts: [{ property: "Sort", direction: "ascending" }],
@@ -187,7 +159,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       settings.set(titleText(page.properties.Name), richText(page.properties.Value));
     }
 
-    const allPosts = (postsResponse.results as any[])
+    const allPosts = (postsResponse as any[])
       .map((page) => {
         const properties = page.properties;
         const source = properties["Source Account"]?.select?.name;
@@ -211,7 +183,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
         Boolean(post.title && post.summary && post.date && post.sortDate && post.href),
       );
 
-    const posts = selectHomepagePosts(allPosts);
+    const { posts, moreDailyJapanWisdom } = selectPostLists(allPosts);
 
     const sideQuests = (sideQuestsResponse.results as any[])
       .map((page) => {
@@ -233,6 +205,7 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       profileJapanese: settings.get("Profile Japanese") || fallbackContent.profileJapanese,
       postCount: 7,
       posts,
+      moreDailyJapanWisdom,
       sideQuests: sideQuests.length ? sideQuests : fallbackContent.sideQuests,
     };
   } catch {

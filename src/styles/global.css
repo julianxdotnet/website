@@ -255,6 +255,27 @@ h1 {
     gap: 0.35rem;
 }
 
+.djw-history {
+    margin-top: 2rem;
+}
+
+.djw-history summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--accent);
+    font-weight: 600;
+    padding: 0.5rem 0;
+}
+
+.djw-history summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.djw-history[open] > .post-list {
+    margin-top: 1rem;
+}
+
 .post-title {
     width: fit-content;
     color: var(--accent);

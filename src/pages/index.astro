@@ -76,6 +76,24 @@ const socialHref = Object.fromEntries(socials.map((social) => [social.label, soc
               </li>
             ))}
           </ul>
+          {content.moreDailyJapanWisdom.length > 0 && (
+            <details class="djw-history">
+              <summary>More DailyJapanWisdom</summary>
+              <ul class="post-list">
+                {content.moreDailyJapanWisdom.map((post) => (
+                  <li class="post-item">
+                    <a class="post-title" href={post.href}>{post.title}</a>
+                    <p class="post-meta">
+                      <span class="calendar" aria-hidden="true">&#9635;</span> {post.date}
+                      {post.romaji ? <><span>&bull;</span> {post.romaji}</> : null}
+                      <span>&bull;</span> 2 min read
+                    </p>
+                    <p>{post.summary}</p>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
         </section>
 
         <section id="projects" class="about-section" aria-labelledby="projects-title">
